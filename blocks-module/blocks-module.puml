@@ -1,16 +1,16 @@
 @startuml Blocks_Module_Class_Diagram
 
-Trait EnergyBalance {
+Interface EnergyBalance {
   energy_balance_check(stream_in : connector, stream_out : connector) : bool {} 
 }
 
-Trait MassBalance {
-  
+Interface MassBalance {
+  material_balance_check(stream_in : connector, stream_out : connector) : bool {}  
 }
 
 
-Trait ElementBalance {
-
+Interface ElementBalance {
+  element_balance_check(stream_in : connector, stream_out : connector) : bool {}
 }
 
 

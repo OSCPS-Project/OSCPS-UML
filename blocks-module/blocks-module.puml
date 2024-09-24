@@ -1,6 +1,31 @@
-@startuml Hello World
+@startuml Blocks_Module_Class_Diagram
 
-A -> B: Hello World
+Trait EnergyBalance {
+  energy_balance_check(stream_in : connector, stream_out : connector) : bool {} 
+}
+
+Trait MassBalance {
+  
+}
+
+
+Trait ElementBalance {
+
+}
+
+
+
+
+
+Struct Mixer {
+  - int id
+  + String name
+  + Vec<connectors> in_streams
+  + Vec<connectors> out_streams
+  ---Public Methods--
+
+}
+
 
 @enduml
 

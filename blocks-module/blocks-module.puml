@@ -26,12 +26,11 @@ Struct Mixer {
   + Vec<connectors> out_streams
 
   ---Public Methods--
-  + pub fn compute_flow_in() : connector {}
   + pub fn compute_flow_out() : connector {}
   ---Private Methods--
   - fn compute phase_fractions() {}
-  - fn temperature_in() {}
   - fn temperature_out() {}
+  - fn pressure_out() {} 
 }
 
 EnergyBalance --> Mixer

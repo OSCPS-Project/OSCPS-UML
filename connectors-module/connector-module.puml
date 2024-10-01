@@ -1,0 +1,8 @@
+@startuml connector_module_class_diagram
+
+Struct connector {
+
+}
+
+
+@enduml

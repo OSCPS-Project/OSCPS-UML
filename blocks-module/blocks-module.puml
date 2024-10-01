@@ -19,9 +19,12 @@ Interface ElementBalance {
 
 Struct Mixer {
   - int id
+  - int Xcord
+  - int Ycord
   + String name
   + Vec<connectors> in_streams
   + Vec<connectors> out_streams
+
   ---Public Methods--
   + pub fn compute_flow_in() : connector {}
   + pub fn compute_flow_out() : connector {}
@@ -32,7 +35,6 @@ Struct Mixer {
 
 EnergyBalance --> Mixer
 MassBalance --> Mixer
-ElementBalance --> Mixer
 
 
 @enduml

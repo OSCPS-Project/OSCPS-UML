@@ -10,19 +10,25 @@ Interface MassBalance {
 
 
 Struct Mixer {
-  - int id
-  - int Xcord
-  - int Ycord
-  + String name
-  + Vec<connectors> in_streams
-  + Vec<connectors> out_streams
+  + int id
+  + int Xcord
+  + int Ycord
+  + Vec<connector::Mconnector> in_streams_mass
+  + Vec<connector::Econnector> in_streams_energy
+  + connector::Econnector out_stream_energy
+  + connector::Mconnector out_stream_mass
 
   ---Public Methods--
-  + pub fn compute_flow_out() : connector {}
+  + pub fn new(id : String, in_streams : Vec<connector::Mconnector>) : Mixer {}
+  + pub fn execute_block() : bool {}
   ---Private Methods--
-  - fn compute phase_fractions() {}
-  - fn temperature_out() {}
-  - fn pressure_out() {} 
+  - fn compute_inlet_mass_flow() {}
+  - fn compute_outlet_mass_flow() {}
+  - fn compute_inlet_energy_flow() {}
+  - fn compute_outlet_enerrgy_flows() {}
+  - fn compute_outlet_phase_fractions() {}
+  - fn compute_outlet_temperature() {}
+  - fn compute_outlet_pressure() {} 
 }
 
 EnergyBalance --> Mixer

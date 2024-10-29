@@ -9,14 +9,6 @@ Interface MassBalance {
 }
 
 
-Interface ElementBalance {
-  element_balance_check(stream_in : Vec<connector>, stream_out : Vec<connector>) : bool {}
-}
-
-
-
-
-
 Struct Mixer {
   - int id
   - int Xcord

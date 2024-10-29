@@ -1,16 +1,16 @@
 @startuml Blocks_Module_Class_Diagram
 
 Interface EnergyBalance {
-  energy_balance_check(stream_in : connector, stream_out : connector) : bool {} 
+  energy_balance_check(energy_in : Energy, energy_out : Energy) : bool {} 
 }
 
 Interface MassBalance {
-  material_balance_check(stream_in : connector, stream_out : connector) : bool {}  
+  material_balance_check(mass_in : Mass, mass_out : Mass) : bool {}  
 }
 
 
 Interface ElementBalance {
-  element_balance_check(stream_in : connector, stream_out : connector) : bool {}
+  element_balance_check(stream_in : Vec<connector>, stream_out : Vec<connector>) : bool {}
 }
 
 

@@ -22,9 +22,7 @@ Struct Mixer {
   + pub fn new(id : String, in_streams : Vec<connector::Mconnector>) : Mixer {}
   + pub fn execute_block() : bool {}
   ---Private Methods--
-  - fn compute_inlet_mass_flow() {}
   - fn compute_outlet_mass_flow() {}
-  - fn compute_inlet_energy_flow() {}
   - fn compute_outlet_enerrgy_flows() {}
   - fn compute_outlet_phase_fractions() {}
   - fn compute_outlet_temperature() {}

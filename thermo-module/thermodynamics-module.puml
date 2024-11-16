@@ -1,0 +1,8 @@
+@startuml thermodynamics_module_class_diagram
+
+Struct thermo {
+
+}
+
+
+@enduml

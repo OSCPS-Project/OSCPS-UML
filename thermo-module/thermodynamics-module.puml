@@ -1,8 +1,45 @@
 @startuml thermodynamics_module_class_diagram
 
-Struct thermo {
+Struct MaterialStreamState {
+  + Pressure pressure
+  + ThermodynamicTemperature temperature
+  + Mass total_mass
+  + AmountOfSubstance total_mole
+  + Vec<ComponentData> mass_list
+  + Box<dyn ThermoPackage> thermodynamics_package
+
+  ---Public Methods---
+  + fn new() : MaterialStreamState {}
+  + fn change_component_list(&self, species : Chemical, add_component : bool) : Vec<ComponentData> {}
+  + fn change_stream_pressure(&self, pressure : Pressure, add_pressure : bool) : Pressure {}
+  + fn change_stream_temperature(&self, temperature : ThermodynamicTemperature, add_temperature : bool) : ThermodynamicTemperature {}
+  + fn change_stream_total_mass(&self, mass : Mass, add_mass : bool) : Mass {}
+  + fn change_stream_total_moles(&self, moles : AmountOfSubstance, add_moles : bool) : AmountOfSubstance {}
+  + fn change_thermodynamic_package(&self, new_thermo_package : Box<dyn ThermoPackage>) : Box<dyn ThermoPackage> {}
+  + fn execute_stream_property_calcs(&self) : MaterialStreamState {}
 
 }
+
+Struct ComponentData {
+  + Chemical chemical_species
+  + Mass mass_quantity
+  + AmountOfSubstance molar_quantity
+  + Volume vol_quantity
+  + Pressure partial_pressure
+}
+
+Interface ThermoPackage {
+    + fn enthalpy(&self) : Energy
+    + fn entropy(&self) : Energy
+    + fn calculate_moles(&self) : AmountOfSubstance
+    + fn pressure(&self) : Pressure
+    + fn temperature(&self) : ThermodynamicTemperature
+    + fn volume(&self) : Volume
+    + fn heat_capacity(&self) : HeatCapacity
+    + fn internal_energy(&self) : Energy
+    + fn gibbs_free_energy(&self) : Energy
+}
+
 
 
 @enduml

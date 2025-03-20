@@ -17,7 +17,10 @@ Struct ThermoState {
   + fn change_stream_total_moles(&self, moles : AmountOfSubstance, add_moles : bool) : AmountOfSubstance {}
   + fn change_thermodynamic_package(&self, new_thermo_package : Box<dyn ThermoPackage>) : Box<dyn ThermoPackage> {}
   + fn execute_stream_property_calcs(&self) : ThermoState {}
-
+  ---Private Methods---
+  - fn calc_total_mass(&mut self) : Mass {}
+  - fn calc_total_moles(&mut self) : AmountOfSubstance {}
+  - fn calc_total_volume(&mut self) : Volume {}
 }
 
 Struct ComponentData {

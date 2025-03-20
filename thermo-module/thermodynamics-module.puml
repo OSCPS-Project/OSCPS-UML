@@ -1,6 +1,6 @@
 @startuml thermodynamics_module_class_diagram
 
-Struct MaterialStreamState {
+Struct ThermoState {
   + Pressure pressure
   + ThermodynamicTemperature temperature
   + Mass total_mass
@@ -9,14 +9,14 @@ Struct MaterialStreamState {
   + Box<dyn ThermoPackage> thermodynamics_package
 
   ---Public Methods---
-  + fn new() : MaterialStreamState {}
+  + fn new() : ThermoState {}
   + fn change_component_list(&self, species : Chemical, add_component : bool) : Vec<ComponentData> {}
   + fn change_stream_pressure(&self, pressure : Pressure, add_pressure : bool) : Pressure {}
   + fn change_stream_temperature(&self, temperature : ThermodynamicTemperature, add_temperature : bool) : ThermodynamicTemperature {}
   + fn change_stream_total_mass(&self, mass : Mass, add_mass : bool) : Mass {}
   + fn change_stream_total_moles(&self, moles : AmountOfSubstance, add_moles : bool) : AmountOfSubstance {}
   + fn change_thermodynamic_package(&self, new_thermo_package : Box<dyn ThermoPackage>) : Box<dyn ThermoPackage> {}
-  + fn execute_stream_property_calcs(&self) : MaterialStreamState {}
+  + fn execute_stream_property_calcs(&self) : ThermoState {}
 
 }
 

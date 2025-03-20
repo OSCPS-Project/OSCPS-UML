@@ -1,1 +1,27 @@
 @startuml ideal_gas_package_class_design
+
+
+Interface ThermoPackage {
+    + fn enthalpy(&self) : Energy
+    + fn entropy(&self) : Energy
+    + fn calculate_moles(&self) : AmountOfSubstance
+    + fn pressure(&self) : Pressure
+    + fn temperature(&self) : ThermodynamicTemperature
+    + fn volume(&self) : Volume
+    + fn heat_capacity(&self) : HeatCapacity
+    + fn internal_energy(&self) : Energy
+    + fn gibbs_free_energy(&self) : Energy
+}
+
+Struct IdealGasPackage {
+  + *ThermodynamicTemperature temperature
+  + *Pressure pressure
+  + *Vec<ComponentData> species_list
+  + *Mass total_mass
+  + *Volume total_vol
+  + *AmountOfSubstance total_mol
+}
+
+ThermoPackage --> IdealGasPackage
+
+@enduml

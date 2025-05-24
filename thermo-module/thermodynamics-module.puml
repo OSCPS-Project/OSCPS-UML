@@ -1,5 +1,17 @@
 @startuml thermodynamics_module_class_diagram
 
+!include ./thermo-packages/ideal-gas-package.puml
+
+enum ThermodynamicConstants {
+    + UniversalGasConstant,
+    + StandardTemperature,
+    + StandardPressure,
+    + AvogadroNumber
+    --Public Methods--
+    + fn value(&self) : Box<dyn std::any::Any> {}
+}
+
+
 Struct ThermoState {
   + Pressure pressure
   + ThermodynamicTemperature temperature
@@ -8,7 +20,7 @@ Struct ThermoState {
   + Vec<ComponentData> mass_list
   + Box<dyn ThermoPackage> thermodynamics_package
 
-  ---Public Methods---
+  --Public Methods--
   + fn new() : ThermoState {}
   + fn change_component_list(&self, species : Chemical, add_component : bool) : Vec<ComponentData> {}
   + fn change_stream_pressure(&self, pressure : Pressure, add_pressure : bool) : Pressure {}
@@ -17,7 +29,7 @@ Struct ThermoState {
   + fn change_stream_total_moles(&self, moles : AmountOfSubstance, add_moles : bool) : AmountOfSubstance {}
   + fn change_thermodynamic_package(&self, new_thermo_package : Box<dyn ThermoPackage>) : Box<dyn ThermoPackage> {}
   + fn execute_stream_property_calcs(&self) : ThermoState {}
-  ---Private Methods---
+  --Private Methods--
   - fn calc_total_mass(&mut self) : Mass {}
   - fn calc_total_moles(&mut self) : AmountOfSubstance {}
   - fn calc_total_volume(&mut self) : Volume {}
@@ -43,6 +55,9 @@ Interface ThermoPackage {
     + fn gibbs_free_energy(&self) : Energy
 }
 
-
+ThermoState --> ThermoPackage
+ThermoState --> ComponentData
+ThermoPackage --> ThermodynamicConstants
+IdealGasPackage --|> ThermoPackage
 
 @enduml

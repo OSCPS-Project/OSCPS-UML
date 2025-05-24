@@ -1,0 +1,14 @@
+@startuml properties_module_class_diagram
+    
+enum ChemicalIdentifier() {
+    + PubchemID : int
+    + CompoundName : string
+}
+
+Struct Chemical {}
+
+Struct ChemialProperties {}
+
+Interface PropertyLibrary {}
+
+@enduml

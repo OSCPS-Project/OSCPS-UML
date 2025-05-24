@@ -20,6 +20,8 @@ Struct IdealGasPackage {
   + *Mass total_mass
   + *Volume total_vol
   + *AmountOfSubstance total_mol
+  ---Public Methods---
+  
 }
 
 ThermoPackage --> IdealGasPackage

@@ -13,13 +13,12 @@ enum ThermodynamicConstants {
 
 
 Struct ThermoState {
-  + Pressure pressure
-  + ThermodynamicTemperature temperature
-  + Mass total_mass
-  + AmountOfSubstance total_mole
-  + Vec<ComponentData> mass_list
-  + Box<dyn ThermoPackage> thermodynamics_package
-
+  + pressure : Pressure
+  + temperature : ThermodynamicTemperature
+  + total_mass : Mass
+  + total_mole: AmountOfSubstance
+  + mass_list : Vec<ComponentData>
+  + thermodynamics_package : box<dyn ThermoPackage>
   --Public Methods--
   + fn new() : ThermoState {}
   + fn change_component_list(&self, species : Chemical, add_component : bool) : Vec<ComponentData> {}
@@ -36,14 +35,15 @@ Struct ThermoState {
 }
 
 Struct ComponentData {
-  + Chemical chemical_species
-  + Mass mass_quantity
-  + AmountOfSubstance molar_quantity
-  + Volume vol_quantity
-  + Pressure partial_pressure
+  + chemical_species : Chemical
+  + mass_quantity : Mass
+  + molar_quantity : AmountOfSubstance
+  + vol_quantity : Volume
+  + partial_pressure : Pressure
 }
 
 Interface ThermoPackage {
+    --Mandatory Methods for all Realizations--
     + fn enthalpy(&self) : Energy
     + fn entropy(&self) : Energy
     + fn calculate_moles(&self) : AmountOfSubstance
@@ -58,6 +58,8 @@ Interface ThermoPackage {
 ThermoState --> ThermoPackage
 ThermoState --> ComponentData
 ThermoPackage --> ThermodynamicConstants
-IdealGasPackage --|> ThermoPackage
+
+IdealGasPackage ..|> ThermoPackage
+IdealGasPackage --> ComponentData
 
 @enduml

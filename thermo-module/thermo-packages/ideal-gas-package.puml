@@ -2,12 +2,12 @@
 
 
 Struct IdealGasPackage {
-  + *ThermodynamicTemperature temperature
-  + *Pressure pressure
-  + *Vec<ComponentData> species_list
-  + *Mass total_mass
-  + *Volume total_vol
-  + *AmountOfSubstance total_mol
+  + temperature : *ThermodynamicTemperature
+  + pressure : *Pressure
+  + species_list : *Vec<ComponentData>
+  + total_mass : *Mass
+  + total_vol : *Volume
+  + total_mol : *AmountOfSubstance 
   ---Public Methods---
   
 }

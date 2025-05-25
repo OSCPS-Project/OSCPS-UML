@@ -9,7 +9,7 @@ Struct IdealGasPackage {
   + total_vol : *Volume
   + total_mol : *AmountOfSubstance 
   ---Public Methods---
-  
+  + fn new(temperature : Arc<ThermodynamicTemperature>, pressure : Arc<Pressure>, species_list : Arc<Mass>, total_mass : Arc<Mass>, total_vol : Arc<Volume>, total_mol : Arc<AmountOfSubstance>) -> Self {}
 }
 
 

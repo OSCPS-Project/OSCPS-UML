@@ -12,7 +12,7 @@ enum ThermodynamicConstants {
 }
 
 
-Struct ThermoState {
+Struct StreamThermoState {
   + pressure : Pressure
   + temperature : ThermodynamicTemperature
   + total_mass : Mass
@@ -20,18 +20,12 @@ Struct ThermoState {
   + mass_list : Vec<ComponentData>
   + thermodynamics_package : box<dyn ThermoPackage>
   --Public Methods--
-  + fn new() : ThermoState {}
-  + fn change_component_list(&self, species : Chemical, add_component : bool) : Vec<ComponentData> {}
-  + fn change_stream_pressure(&self, pressure : Pressure, add_pressure : bool) : Pressure {}
-  + fn change_stream_temperature(&self, temperature : ThermodynamicTemperature, add_temperature : bool) : ThermodynamicTemperature {}
-  + fn change_stream_total_mass(&self, mass : Mass, add_mass : bool) : Mass {}
-  + fn change_stream_total_moles(&self, moles : AmountOfSubstance, add_moles : bool) : AmountOfSubstance {}
-  + fn change_thermodynamic_package(&self, new_thermo_package : Box<dyn ThermoPackage>) : Box<dyn ThermoPackage> {}
-  + fn execute_stream_property_calcs(&self) : ThermoState {}
+  + fn new() : Self {}
+  + fn execute_thermo_calcs(&self) : Self {}
   --Private Methods--
-  - fn calc_total_mass(&mut self) : Mass {}
-  - fn calc_total_moles(&mut self) : AmountOfSubstance {}
-  - fn calc_total_volume(&mut self) : Volume {}
+  - fn calc_total_mass(&mut self) -> Mass {}
+  - fn calc_total_moles(&mut self) -> AmountOfSubstance {}
+  - fn calc_total_volume(&mut self) -> Volume {}
 }
 
 Struct ComponentData {
@@ -44,19 +38,19 @@ Struct ComponentData {
 
 Interface ThermoPackage {
     --Mandatory Methods for all Realizations--
-    + fn enthalpy(&self) : Energy
-    + fn entropy(&self) : Energy
-    + fn calculate_moles(&self) : AmountOfSubstance
-    + fn pressure(&self) : Pressure
-    + fn temperature(&self) : ThermodynamicTemperature
-    + fn volume(&self) : Volume
-    + fn heat_capacity(&self) : HeatCapacity
-    + fn internal_energy(&self) : Energy
-    + fn gibbs_free_energy(&self) : Energy
+    + fn enthalpy(&self) -> Energy
+    + fn entropy(&self) -> Energy
+    + fn calculate_moles(&self) -> AmountOfSubstance
+    + fn pressure(&self) -> Pressure
+    + fn temperature(&self) -> ThermodynamicTemperature
+    + fn volume(&self) -> Volume
+    + fn heat_capacity(&self) -> HeatCapacity
+    + fn internal_energy(&self) -> Energy
+    + fn gibbs_free_energy(&self) -> Energy
 }
 
-ThermoState --> ThermoPackage
-ThermoState --> ComponentData
+StreamThermoState --> ThermoPackage
+StreamThermoState --> ComponentData
 ThermoPackage --> ThermodynamicConstants
 
 IdealGasPackage ..|> ThermoPackage

@@ -5,7 +5,9 @@ enum ChemicalIdentifier() {
     + CompoundName : string
 }
 
-Struct Chemical {}
+Struct Chemical {
+    + pubchem
+}
 
 Struct ChemialProperties {}
 

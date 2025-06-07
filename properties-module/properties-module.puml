@@ -9,7 +9,7 @@ Struct Chemical {
     + pubchem
 }
 
-Struct ChemialProperties {}
+Struct ChemicalProperties {}
 
 Interface PropertyLibrary {}
 

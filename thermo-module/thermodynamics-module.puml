@@ -1,6 +1,8 @@
 @startuml thermodynamics_module_class_diagram
+skinparam linetype ortho
 
-!include ./thermo-packages/ideal-gas-package.puml
+!include ./thermo-packages/cubic-eos-module.puml
+!include ../stream-module/connector-module.puml
 
 enum ThermodynamicConstants {
     + UniversalGasConstant,
@@ -11,32 +13,12 @@ enum ThermodynamicConstants {
     + fn value(&self) : Box<dyn std::any::Any> {}
 }
 
-
-Struct StreamThermoState {
-  + pressure : Pressure
-  + temperature : ThermodynamicTemperature
-  + total_mass : Mass
-  + total_mole: AmountOfSubstance
-  + mass_list : Vec<ComponentData>
-  + thermodynamics_package : box<dyn ThermoPackage>
-  --Public Methods--
-  + fn new() : Self {}
-  + fn execute_thermo_calcs(&self) : Self {}
-  --Private Methods--
-  - fn calc_total_mass(&mut self) -> Mass {}
-  - fn calc_total_moles(&mut self) -> AmountOfSubstance {}
-  - fn calc_total_volume(&mut self) -> Volume {}
+enum EOSParams<T> {
+    Single: Vec<T>,
+    Pair: Vec<Vec<T>>,
 }
 
-Struct ComponentData {
-  + chemical_species : Chemical
-  + mass_quantity : Mass
-  + molar_quantity : AmountOfSubstance
-  + vol_quantity : Volume
-  + partial_pressure : Pressure
-}
-
-Interface ThermoPackage {
+Interface MaxwellRelations {
     --Mandatory Methods for all Realizations--
     + fn enthalpy(&self) -> Energy
     + fn entropy(&self) -> Energy
@@ -49,11 +31,15 @@ Interface ThermoPackage {
     + fn gibbs_free_energy(&self) -> Energy
 }
 
-StreamThermoState --> ThermoPackage
-StreamThermoState --> ComponentData
-ThermoPackage --> ThermodynamicConstants
+StreamThermoState --> MaxwellRelations :uses
+MaxwellRelations --> ThermodynamicConstants
 
-IdealGasPackage ..|> ThermoPackage
-IdealGasPackage --> ComponentData
+ABEOSCubicModel --> EOSParams :uses
+ABCEOSCubicModel --> EOSParams :uses
+
+ABEOSCubicModel ..|> MaxwellRelations
+ABCEOSCubicModel ..|> MaxwellRelations
+ABEOSCubicModel --> ComponentData :uses
+ABCEOSCubicModel --> ComponentData :uses
 
 @enduml

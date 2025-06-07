@@ -1,8 +1,40 @@
 @startuml connector_module_class_diagram
 
-Struct connector {
 
+Struct Stream {
+ + s_id : String,
+ + thermo: Option<StreamThermoState>
+ + from_block: String
+ + to_block: String
+ --Public Methods--
+ + fn new(id: String, from_blk_id: String, to_blk_id: String) -> Stream {}
 }
 
+Struct StreamThermoState {
+  + pressure : Pressure
+  + temperature : ThermodynamicTemperature
+  + total_mass : Mass
+  + total_mole: AmountOfSubstance
+  + mass_list : Vec<ComponentData>
+  + thermodynamics_package : box<dyn ThermoPackage>
+  --Public Methods--
+  + fn new() : Self {}
+  + fn execute_thermo_calcs(&self) : Self {}
+  --Private Methods--
+  - fn calc_total_mass(&mut self) -> Mass {}
+  - fn calc_total_moles(&mut self) -> AmountOfSubstance {}
+  - fn calc_total_volume(&mut self) -> Volume {}
+}
+
+Struct ComponentData {
+  + chemical_species : Chemical
+  + mass_quantity : Mass
+  + molar_quantity : AmountOfSubstance
+  + vol_quantity : Volume
+  + partial_pressure : Pressure
+}
+
+StreamThermoState --> ComponentData :uses
+Stream --> StreamThermoState :uses
 
 @enduml

@@ -1,0 +1,12 @@
+@startuml OSCPS_class_diagram
+top to bottom direction
+skinparam linetype ortho
+
+!include ./thermo-module/thermodynamics-module.puml
+!include ./stream-module/connector-module.puml
+!include ./blocks-module/blocks-module.puml
+!include ./properties-module/properties-module.puml
+
+
+
+@enduml

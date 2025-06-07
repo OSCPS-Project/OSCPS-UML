@@ -1,37 +1,39 @@
 @startuml Blocks_Module_Class_Diagram
 
 Interface EnergyBalance {
-  energy_balance_check(energy_in : Energy, energy_out : Energy) : bool {} 
+    --Mandatory Methods for all Realizations--
+    fn energy_balance_check(energy_in : Energy, energy_out : Energy) : bool {} 
 }
 
 Interface MassBalance {
-  material_balance_check(mass_in : Mass, mass_out : Mass) : bool {}  
+    --Mandatory Methods for all Realizations--
+    fn material_balance_check(mass_in : Mass, mass_out : Mass) : bool {}  
+}
+
+Interface Block {
+    --Mandatory Methods for all Realizations--
+    + fn connect_input(&mut self, stream: &mut Stream) -> Result<(), &str>
+    + fn disconnect_input(&mut self, stream: &mut Stream) -> Result<(), &str>
+    + fn connect_output(&mut self, stream: &mut Stream) -> Result<(), &str>
+    + fn disconnect_output(&mut self, stream: &mut Stream) -> Result<(), &str>
 }
 
 
 Struct Mixer {
-  + int id
-  + int Xcord
-  + int Ycord
-  + Vec<connector::Mconnector> in_streams_mass
-  + Vec<connector::Econnector> in_streams_energy
-  + connector::Econnector out_stream_energy
-  + connector::Mconnector out_stream_mass
-
-  ---Public Methods--
-  + pub fn new(id : String, in_streams : Vec<connector::Mconnector>) : Mixer {}
-  + pub fn execute_block() : bool {}
-  ---Private Methods--
-  - fn compute_outlet_mass_flow() {}
-  - fn compute_outlet_enerrgy_flows() {}
-  - fn compute_outlet_phase_fractions() {}
-  - fn compute_outlet_temperature() {}
-  - fn compute_outlet_pressure() {} 
+  + id: u64,
+  + inputs: Vec<Box<Stream>>
+  + outputs: Vec<Box<Stream>>
+  --Public Methods--
+  + pub fn new(id : u64) -> Mixer {}
 }
 
-EnergyBalance --> Mixer
-MassBalance --> Mixer
+Mixer ..|> EnergyBalance
+Mixer ..|> MassBalance
+Mixer ..|> Block
 
+note right of Mixer
+  Mixer struct will also implement "Clone."
+end note
 
 @enduml
 

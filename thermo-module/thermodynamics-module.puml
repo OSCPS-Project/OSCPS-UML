@@ -5,17 +5,17 @@ skinparam linetype ortho
 !include ../stream-module/connector-module.puml
 
 enum ThermodynamicConstants {
-    + UniversalGasConstant,
-    + StandardTemperature,
-    + StandardPressure,
+    + UniversalGasConstant
+    + StandardTemperature
+    + StandardPressure
     + AvogadroNumber
     --Public Methods--
     + fn value(&self) : Box<dyn std::any::Any> {}
 }
 
 enum EOSParams<T> {
-    Single: Vec<T>,
-    Pair: Vec<Vec<T>>,
+    Single: Vec<T>
+    Pair: Vec<Vec<T>>
 }
 
 Interface MaxwellRelations {

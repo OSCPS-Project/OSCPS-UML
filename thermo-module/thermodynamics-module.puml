@@ -18,27 +18,50 @@ enum EOSParams<T> {
     Pair: Vec<Vec<T>>
 }
 
-Interface MaxwellRelations {
-    --Mandatory Methods for all Realizations--
-    + fn enthalpy(&self) -> Energy
-    + fn entropy(&self) -> Energy
-    + fn calculate_moles(&self) -> AmountOfSubstance
-    + fn pressure(&self) -> Pressure
-    + fn temperature(&self) -> ThermodynamicTemperature
-    + fn volume(&self) -> Volume
-    + fn heat_capacity(&self) -> HeatCapacity
-    + fn internal_energy(&self) -> Energy
-    + fn gibbs_free_energy(&self) -> Energy
+Interface ThermoProperties {
+
 }
 
-StreamThermoState --> MaxwellRelations :uses
-MaxwellRelations --> ThermodynamicConstants
+note right of ThermoProperties
+    Will contain function to retrieve thermodynamic property values from the
+    thermodynamic packages. Specifically, these are properties shared by all types of thermodynamic
+    packages. 
+
+    All EOSModels will need to implement this 
+end note
+
+Interface ThermoProperties::Pressure {
+
+}
+
+Interface ThermoProperties::XYMethods {
+
+}
+
+Interface ThermoProperties::SingleComponentProperties {
+
+}
+
+Interface ThermoProperties::MultiComponentProperties {
+
+}
+
+
+
+
+StreamThermoState --> ThermoProperties :uses
+ThermoProperties --> ThermodynamicConstants
+
+ThermoProperties::XYMethods --|> ThermoProperties
+ThermoProperties::SingleComponentProperties --|> ThermoProperties
+ThermoProperties::MultiComponentProperties --|> ThermoProperties
+
 
 ABEOSCubicModel --> EOSParams :uses
 ABCEOSCubicModel --> EOSParams :uses
 
-ABEOSCubicModel ..|> MaxwellRelations
-ABCEOSCubicModel ..|> MaxwellRelations
+ABEOSCubicModel ..|> ThermoProperties
+ABCEOSCubicModel ..|> ThermoProperties
 ABEOSCubicModel --> ComponentData :uses
 ABCEOSCubicModel --> ComponentData :uses
 

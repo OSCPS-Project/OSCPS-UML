@@ -30,9 +30,7 @@ note right of ThermoProperties
     All EOSModels will need to implement this 
 end note
 
-Interface ThermoProperties::Pressure {
 
-}
 
 Interface ThermoProperties::XYMethods {
 

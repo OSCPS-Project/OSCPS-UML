@@ -18,49 +18,18 @@ enum EOSParams<T> {
     Pair: Vec<Vec<T>>
 }
 
-Interface ThermoProperties {
+Interface BaseEOSModel {
 
 }
 
-note right of ThermoProperties
-    Will contain function to retrieve thermodynamic property values from the
-    thermodynamic packages. Specifically, these are properties shared by all types of thermodynamic
-    packages. 
-
-    All EOSModels will need to implement this 
-end note
-
-
-
-Interface ThermoProperties::XYMethods {
+Interface BaseThermoProperties {
 
 }
-
-Interface ThermoProperties::SingleComponentProperties {
-
-}
-
-Interface ThermoProperties::MultiComponentProperties {
-
-}
-
 
 
 
 StreamThermoState --> ThermoProperties :uses
-ThermoProperties --> ThermodynamicConstants
+ThermoProperties --> BaseThermodynamicConstants
 
-ThermoProperties::XYMethods --|> ThermoProperties
-ThermoProperties::SingleComponentProperties --|> ThermoProperties
-ThermoProperties::MultiComponentProperties --|> ThermoProperties
-
-
-ABEOSCubicModel --> EOSParams :uses
-ABCEOSCubicModel --> EOSParams :uses
-
-ABEOSCubicModel ..|> ThermoProperties
-ABCEOSCubicModel ..|> ThermoProperties
-ABEOSCubicModel --> ComponentData :uses
-ABCEOSCubicModel --> ComponentData :uses
 
 @enduml

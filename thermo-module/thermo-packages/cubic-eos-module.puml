@@ -1,24 +1,12 @@
 @startuml eos_module_cubic_class_diagram
 
-
-struct ABEOSCubicModel {
-    + a: EOSParam::Pair
-    + b: EOSParam::Pair
-    + tc: EOSParam::Single
-    + Pc: EOSParam::Single
-    + Mw: EOSParam::Single
+Interface BaseEOSModel::CubicBaseEOSModel {
 
 }
 
-struct ABCEOSCubicModel {
-    + a: EOSParam::Pair
-    + b: EOSParam::Pair
-    + c: EOSParam::Pair
-    + tc: EOSParam::Single
-    + Pc: EOSParam::Single
-    + Vc: EOSParam::Single
-    + Mw: EOSParam::Single
-}
 
+Struct VDW {
+
+}
 
 @enduml

@@ -1,5 +1,9 @@
 @startuml eos_module_cubic_class_diagram
 
+note right side of BaseEOSModel::CubicBaseEOSModel {
+    All the structs will inherit from BaseEOSModel::CubicBaseEOSModel
+}
+
 Interface BaseEOSModel::CubicBaseEOSModel {
 
 }
@@ -8,5 +12,27 @@ Interface BaseEOSModel::CubicBaseEOSModel {
 Struct VDW {
 
 }
+
+Struct PR {
+
+}
+
+Struct RKPR {
+
+}
+
+Struct RK {
+
+}
+
+Struct KU {
+
+}
+
+Struct PatelTejas {
+
+}
+
+
 
 @enduml

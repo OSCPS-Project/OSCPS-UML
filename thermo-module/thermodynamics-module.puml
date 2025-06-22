@@ -18,18 +18,25 @@ enum EOSParams<T> {
     Pair: Vec<Vec<T>>
 }
 
+note right side BaseEOSModel {
+    Reference: https://github.com/ClapeyronThermo/Clapeyron.jl
+    Base Functions for EOS model that all EOS Models will pull from
+}
 Interface BaseEOSModel {
 
 }
 
+note right side BaseThermoProperties {
+    Contain the Base Supporting Methods
+}
 Interface BaseThermoProperties {
 
 }
 
 
 
-StreamThermoState --> ThermoProperties :uses
-ThermoProperties --> BaseThermodynamicConstants
+StreamThermoState --> BaseThermoProperties :uses
+ThermoProperties --> ThermodynamicConstants
 
 
 @enduml

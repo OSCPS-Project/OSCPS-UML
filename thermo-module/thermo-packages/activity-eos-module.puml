@@ -1,0 +1,25 @@
+@startuml activity_eos_class_diagrams
+
+Interface BaseEOSModel::ActivityEOSModel {
+
+}
+
+Struct Wilson {
+
+}
+
+Struct NRTL {
+
+}
+
+Struct UNIFAC {
+
+}
+
+Struct UNIQUAC {
+
+}
+
+
+
+@enduml

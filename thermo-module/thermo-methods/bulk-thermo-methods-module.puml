@@ -1,0 +1,26 @@
+@startuml bulk_thermo_methods_class_diagram
+
+
+Interface BaseThermoSupportingMethods::BulkThermoSupportingMethods {
+    + fn volume {}
+    + fn entropy {}
+    + fn chemical_potential {}
+    + fn internal_energy {}
+    + fn enthalpy {}
+    + fn gibbs_free_energy {}
+    + fn helmholtz_free_energy {}
+    + fn c_v {}
+    + fn c_p {}
+    + fn isothermal_compressibility {}
+    + fn isentropic_compressibility {}
+    + fn speed_of_sound {}
+    + fn isobaric_expansivity {}
+    + fn jt_effect {}
+    + fugacity_coefficient {}
+    + activity_coefficient {}
+    + compressibility_factor {}
+    + inversion_temperature {}
+    + second_virial_coefficient
+}
+
+@enduml

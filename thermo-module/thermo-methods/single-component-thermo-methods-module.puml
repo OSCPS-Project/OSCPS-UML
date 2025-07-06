@@ -1,0 +1,7 @@
+@startuml single_comp_thermo_methods_class_diagram
+
+Interface BaseThermoSupportingMethods::SingleComponentThermoSupportingMethods {
+    + fn critical_point {}
+}
+
+@enduml

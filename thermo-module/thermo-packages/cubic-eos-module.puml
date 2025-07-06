@@ -1,8 +1,5 @@
-@startuml eos_module_cubic_class_diagram
+@startuml cubic_eos_class_diagram
 
-note right side of BaseEOSModel::CubicBaseEOSModel {
-    All the structs will inherit from BaseEOSModel::CubicBaseEOSModel
-}
 
 Interface BaseEOSModel::CubicBaseEOSModel {
 

@@ -1,8 +1,6 @@
 @startuml thermodynamics_module_class_diagram
 skinparam linetype ortho
 
-!include ./thermo-packages/cubic-eos-module.puml
-!include ../stream-module/connector-module.puml
 
 enum ThermodynamicConstants {
     + UniversalGasConstant
@@ -18,24 +16,8 @@ enum EOSParams<T> {
     Pair: Vec<Vec<T>>
 }
 
-note right side BaseEOSModel {
-    Reference: https://github.com/ClapeyronThermo/Clapeyron.jl
-    Base Functions for EOS model that all EOS Models will pull from
-}
-Interface BaseEOSModel {
 
-}
-
-note right side BaseThermoProperties {
-    Contain the Base Supporting Methods
-}
-Interface BaseThermoProperties {
-
-}
-
-
-
-StreamThermoState --> BaseThermoProperties :uses
+StreamThermoState --> BaseThermoSupportingMethods :uses
 ThermoProperties --> ThermodynamicConstants
 
 

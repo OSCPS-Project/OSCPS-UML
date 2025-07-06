@@ -1,0 +1,7 @@
+@startuml excess_thermo_methods_class_diagram
+
+Interface BaseThermoSupportingMethods::ExcessThermoSupportingMethods {
+    + fn excess_calc {}
+}
+
+@enduml

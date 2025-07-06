@@ -1,0 +1,9 @@
+@startuml base_thermo_methods_class_diagram
+
+
+Interface BaseThermoSupportingMethods {
+
+}
+
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml ideal_eos_class_diagram
+
+Interface BaseEOSModel {
+
+}
+
+Struct BaseIdeal {
+
+}
+
+Struct ReidPolynomial {
+
+}
+
+Struct JobackMethod {
+
+}
+
+Struct WalkerModel {
+
+}
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml empirical_helmholtz_eos_class_diagram
+
+Struct IAPWS95 {
+
+}
+
+Struct GERG2008 {
+
+}
+
+Struct LNGEOSModel {
+
+}
+
+Struct LennardJones {
+
+}
+
+Struct PropaneRef {
+
+}
+
+@enduml

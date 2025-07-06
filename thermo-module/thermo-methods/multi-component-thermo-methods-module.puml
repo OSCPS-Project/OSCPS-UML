@@ -1,0 +1,19 @@
+@startuml multi_comp_thermo_methods_class_diagram
+
+Interface BaseThermoSupportingMethods::MultiCompThermoSupportingMethods {
+    + fn bubble_P {}
+    + fn bubble_T {}
+    + fn dew_P {}
+    + fn dew_T {}
+    + fn LLE_P {}
+    + fn LLE_T {}
+    + fn azeotrope_P {}
+    + fn azeotrope_T {}
+    + fn VLLE_P {}
+    + fn VLLE_T {}
+    + fn critical_point_VLE {}
+    + fn UCST {}
+    + fn UCEP {}
+}
+
+@enduml

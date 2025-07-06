@@ -1,0 +1,8 @@
+@startuml mixing_thermo_methods_class_diagram 
+
+
+Interface BaseThermoSupportingMethods::MixingThermoSuppportingMethods {
+    + fn mixing {}
+}
+
+@enduml

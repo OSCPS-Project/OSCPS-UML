@@ -1,0 +1,11 @@
+@startuml VLE_thermo_mehods_class_diagram
+
+Interface BaseThermoSupportingMethods::VLEThermoSupportingMethods {
+    + fn saturation_pressure {}
+    + fn saturation_temperature {}
+    + fn vaporization_enthalpy {}
+
+}
+
+
+@enduml

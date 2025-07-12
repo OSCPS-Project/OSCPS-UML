@@ -1,14 +1,22 @@
 @startuml ideal_eos_class_diagram
 
 Interface BaseEOSModel {
-    
+    + fn ideal_helmholtz()    
 }
 
 Struct BaseIdeal {
-
+    + *ComponentData components
 }
 
 Struct ReidPolynomial {
+    + *ComponentData components
+    + EOSParams::SingleParam<f64> a
+    + EOSParams::SingleParam<f64> b
+    + EOSParams::SingleParam<f64> c
+    + EOSParams::SingleParam<f64> d
+    + EOSParams::SingleParam<f64> e
+    + EOSParams::SingleParam<tuple<f64>> coefficients
+    + EOS:Params::SingleParam<f64> MW
 
 }
 

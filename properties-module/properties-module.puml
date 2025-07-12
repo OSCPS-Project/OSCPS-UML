@@ -12,7 +12,7 @@ Struct Chemical {
     + fn new() -> Self
 }
 
-note right of Chemical
+note left of Chemical
   "Chemical" struct will be dependent on external library "pubchem"
 end note
 

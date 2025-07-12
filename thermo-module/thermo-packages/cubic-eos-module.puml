@@ -4,32 +4,69 @@
 
 
 Interface CubicEOSModel {
-
+    + fn alpha_function()
+    + fn volume_translation()
+    + fn mixing_rule()
 }
 
 
 Struct VDW {
-
+    + *ComponentData components
+    + EOSParams::Pair<f64> a
+    + EOSParams::Pair<f64> b
+    + EOSParams::Single<f64> Tc
+    + EOSParams::Single<f64> Pc
+    + EOSParams::Single<f64> MW 
 }
 
 Struct PR {
-
+    + *ComponentData components
+    + EOSParams::Pair<f64> a
+    + EOSParams::Pair<f64> b
+    + EOSParams::Single<f64> Tc
+    + EOSParams::Single<f64> Pc
+    + EOSParams::Single<f64> MW 
 }
 
 Struct RKPR {
-
+    + *ComponentData components
+    + EOSParams::Pair<f64> a
+    + EOSParams::Pair<f64> b
+    + EOSParams::Single<f64> Tc
+    + EOSParams::Single<f64> Pc
+    + EOSParams::Single<f64> MW 
 }
 
 Struct RK {
-
+    + *ComponentData components
+    + EOSParams::Pair<f64> a
+    + EOSParams::Pair<f64> b
+    + EOSParams::Single<f64> Tc
+    + EOSParams::Single<f64> Pc
+    + EOSParams::Single<f64> MW 
 }
 
 Struct KU {
-
+    + *ComponentData components
+    + EOSParams::Pair<f64> a
+    + EOSParams::Pair<f64> b
+    + EOSParams::Single<f64> omega_b
+    + EOSParams::Single<f64> omega_a
+    + EOSParams::Single<f64> Tc
+    + EOSParams::Single<f64> Pc
+    + EOSParams::Single<f64> Vc
+    + EOSParams::Single<f64> MW 
 }
 
 Struct PatelTejas {
-
+    + *ComponentData components
+    + EOSParams::Pair<f64> a
+    + EOSParams::Pair<f64> b
+    + EOSParams::Pair<f64> c
+    + EOSParams::Single<f64> Tc
+    + EOSParams::Single<f64> Pc
+    + EOSParams::Single<f64> Vc
+    + EOSParams::Single<f64> MW 
 }
 
 CubicEOSModel --> BaseEOSModel

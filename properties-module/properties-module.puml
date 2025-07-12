@@ -1,16 +1,25 @@
 @startuml properties_module_class_diagram
     
-enum ChemicalIdentifier() {
+enum ChemicalIdentifier {
     + PubchemID : int
     + CompoundName : string
 }
 
 Struct Chemical {
-    + pubchem
+    + pubchem::Compound pubchem_obj
+    + ChemicalProperties properties
+    --Public Methods--
+    + fn new() -> Self
 }
+
+note right of Chemical
+  "Chemical" struct will be dependent on external library "pubchem"
+end note
+
 
 Struct ChemicalProperties {}
 
-Interface PropertyLibrary {}
+Chemical --> ChemicalProperties
+Chemical --> ChemicalIdentifier
 
 @enduml

@@ -1,6 +1,13 @@
 @startuml thermodynamics_module_class_diagram
 skinparam linetype ortho
 
+!include ./thermo-packages/ideal-eos-module.puml
+!include ./thermo-packages/activity-eos-module.puml
+!include ./thermo-packages/cubic-eos-module.puml
+
+!include ./thermo-methods/base-thermo-methods-module.puml
+!include ./thermo-methods/bulk-thermo-methods-module.puml
+
 
 enum ThermodynamicConstants {
     + UniversalGasConstant
@@ -12,13 +19,17 @@ enum ThermodynamicConstants {
 }
 
 enum EOSParams<T> {
-    Single: Vec<T>
-    Pair: Vec<Vec<T>>
+    + Single: Vec<T>
+    + Pair: Vec<Vec<T>>
+    + Associated: Vec<Vec<T>>
 }
 
 
-StreamThermoState --> BaseThermoSupportingMethods :uses
-ThermoProperties --> ThermodynamicConstants
+BaseEOSModel --> ThermodynamicConstants
+BaseEOSModel --> EOSParams
+BaseEOSModel --> BaseThermoSupportingMethods
+
+BaseThermoSupportingMethods --> ThermodynamicConstants
 
 
 @enduml

@@ -16,7 +16,7 @@ Struct StreamThermoState {
   + total_mass : Mass
   + total_mole: AmountOfSubstance
   + mass_list : Vec<ComponentData>
-  + thermodynamics_package : box<dyn ThermoPackage>
+  + thermodynamics_package : box<dyn BaseEOSModel>
   --Public Methods--
   + fn new() : Self {}
   + fn execute_thermo_calcs(&self) : Self {}

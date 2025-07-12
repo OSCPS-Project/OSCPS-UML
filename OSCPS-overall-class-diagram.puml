@@ -7,6 +7,8 @@ skinparam linetype ortho
 !include ./blocks-module/blocks-module.puml
 !include ./properties-module/properties-module.puml
 
+StreamThermoState --> BaseEOSModel
+ComponentData --> Chemical
 
 
 @enduml

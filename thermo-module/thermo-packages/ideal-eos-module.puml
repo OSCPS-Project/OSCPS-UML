@@ -20,4 +20,9 @@ Struct WalkerModel {
 
 }
 
+BaseEOSModel ..|> BaseIdeal
+BaseEOSModel ..|> ReidPolynomial
+BaseEOSModel ..|> JobackMethod
+BaseEOSModel ..|> WalkerModel
+
 @enduml

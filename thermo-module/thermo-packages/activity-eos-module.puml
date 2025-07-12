@@ -1,6 +1,8 @@
 @startuml activity_eos_class_diagrams
 
-Interface BaseEOSModel::ActivityEOSModel {
+!include ./ideal-eos-module.puml
+
+Interface ActivityEOSModel {
 
 }
 
@@ -20,6 +22,11 @@ Struct UNIQUAC {
 
 }
 
+ActivityEOSModel --> BaseEOSModel
 
+Wilson ..|> ActivityEOSModel
+NRTL ..|> ActivityEOSModel
+UNIFAC ..|> ActivityEOSModel
+UNIQUAC ..|> ActivityEOSModel
 
 @enduml

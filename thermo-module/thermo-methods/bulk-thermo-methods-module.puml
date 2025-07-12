@@ -1,7 +1,8 @@
 @startuml bulk_thermo_methods_class_diagram
 
+!include ./base-thermo-methods-module.puml
 
-Interface BaseThermoSupportingMethods::BulkThermoSupportingMethods {
+Interface BulkMethods {
     + fn volume {}
     + fn entropy {}
     + fn chemical_potential {}
@@ -22,5 +23,7 @@ Interface BaseThermoSupportingMethods::BulkThermoSupportingMethods {
     + inversion_temperature {}
     + second_virial_coefficient
 }
+
+BulkMethods --> BaseThermoSupportingMethods
 
 @enduml

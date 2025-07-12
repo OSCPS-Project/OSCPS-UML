@@ -1,7 +1,9 @@
 @startuml cubic_eos_class_diagram
 
+!include ./ideal-eos-module.puml
 
-Interface BaseEOSModel::CubicBaseEOSModel {
+
+Interface CubicEOSModel {
 
 }
 
@@ -30,6 +32,13 @@ Struct PatelTejas {
 
 }
 
+CubicEOSModel --> BaseEOSModel
+VDW ..|> CubicEOSModel
+RK ..|> CubicEOSModel
+RKPR --> RK
+PR ..|> CubicEOSModel
+KU ..|> CubicEOSModel
+PatelTejas ..|> CubicEOSModel
 
 
 @enduml

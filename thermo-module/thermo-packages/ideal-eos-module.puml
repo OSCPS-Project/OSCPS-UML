@@ -17,7 +17,6 @@ Struct ReidPolynomial {
     + EOSParams::SingleParam<f64> e
     + EOSParams::SingleParam<tuple<f64>> coefficients
     + EOS:Params::SingleParam<f64> MW
-
 }
 
 Struct JobackMethod {

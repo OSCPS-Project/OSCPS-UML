@@ -20,11 +20,11 @@ Struct ReidPolynomial {
 }
 
 Struct JobackMethod {
-
+    + *ComponentData components
 }
 
 Struct WalkerModel {
-
+    + *ComponentData components
 }
 
 BaseEOSModel ..|> BaseIdeal
